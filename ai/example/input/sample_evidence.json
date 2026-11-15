@@ -1,0 +1,39 @@
+{
+  "case_id": "CASE-00123",
+  "email": {
+    "sender": "attacker@payroll-services-xyz.com",
+    "recipient": "finance@victim-corp.example",
+    "subject": "Urgent: Payroll Update Required - Action Needed Today",
+    "body": "Dear Finance Team,\n\nWe have detected an issue with your company's payroll direct deposit information. For security compliance, we need you to update the banking details for employee payroll immediately.\n\nPlease click the secure link below to verify and update the account information:\nhttps://payroll-services-xyz.com/verify-account\n\nThis must be completed within 24 hours to avoid payroll disruption for your employees. Failure to act will result in delayed salary deposits.\n\nIf you have any questions, reply to this email or contact our support team at support@payroll-services-xyz.com.\n\nRegards,\nPayroll Services XYZ\nCompliance Department"
+  },
+  "security_analysis": {
+    "spf_result": "fail",
+    "dkim_result": "fail",
+    "dmarc_result": "fail",
+    "domain_age_days": 12,
+    "domain_reputation": "suspicious",
+    "ip_reputation": "poor",
+    "attachments": [],
+    "urls": [
+      "https://payroll-services-xyz.com/verify-account"
+    ],
+    "url_analysis": {
+      "https://payroll-services-xyz.com/verify-account": {
+        "domain_age_days": 12,
+        "ssl_valid": true,
+        "redirects": 0,
+        "suspicious_tld": false
+      }
+    }
+  },
+  "threat_intelligence": {
+    "known_phishing_domain": true,
+    "associated_campaigns": ["payroll-phishing-2024"],
+    "malware_families": [],
+    "actor_groups": ["FIN7"],
+    "ioc_matches": [
+      "payroll-services-xyz.com"
+    ],
+    "confidence": "high"
+  }
+}

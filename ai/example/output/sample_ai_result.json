@@ -1,0 +1,53 @@
+{
+  "case_id": "CASE-00123",
+  "ai_assessment": {
+    "phishing_probability": 0.85,
+    "bec_probability": 0.8,
+    "social_engineering_probability": 0.7,
+    "urgency_detected": true,
+    "credential_request_detected": false,
+    "financial_request_detected": true,
+    "suspicious_language": [
+      "Urgent",
+      "Action Needed Today",
+      "immediately",
+      "within 24 hours",
+      "delayed salary deposits"
+    ],
+    "detected_patterns": [
+      "Known phishing domain",
+      "Associated with known BEC campaign",
+      "SPF, DKIM, DMARC failures",
+      "New domain (12 days old)",
+      "Suspicious domain reputation",
+      "Time-bound deadline"
+    ],
+    "explanation": "The email exhibits multiple indicators of phishing and BEC. The use of urgency ('Urgent', 'Action Needed Today', 'immediately', 'within 24 hours') and financial context ('payroll', 'salary', 'direct deposit') are typical of BEC attempts. The domain 'payroll-services-xyz.com' is flagged as a known phishing domain, associated with the 'payroll-phishing-2024' campaign and linked to the actor group FIN7. Security failures (SPF, DKIM, DMARC) and the domain's short age (12 days) further support the likelihood of phishing. The email requests action to update banking details, which is a common BEC tactic.",
+    "model_info": {
+      "model_name": "EmailForensicAnalyzer",
+      "model_version": "1.0",
+      "provider": "SecurityAI",
+      "parameters": {}
+    }
+  },
+  "grounding": {
+    "grounded": true,
+    "unsupported_claims": [],
+    "evidence_references": [
+      "SPF result: fail (acknowledges failure)",
+      "DKIM result: fail (acknowledges failure)",
+      "DMARC result: fail (acknowledges failure)",
+      "Threat intelligence: known phishing domain",
+      "Urgency signals: ['urgent', 'immediately', 'time-bound deadline']",
+      "Financial signals: ['payroll', 'payroll', 'salary', 'direct deposit', 'deposit']",
+      "Phishing indicators: ['new_domain', 'suspicious_reputation', 'known_phishing_domain', 'associated_campaigns']",
+      "BEC indicators: ['same-day payment', 'reply-to manipulation', 'spf_fail', 'dkim_fail', 'dmarc_fail', 'known_actor_group']"
+    ]
+  },
+  "processing_time_seconds": 481.85531735420227,
+  "model_info": {
+    "model": "EmailForensicAnalyzer",
+    "provider": "SecurityAI",
+    "version": "1.0"
+  }
+}
