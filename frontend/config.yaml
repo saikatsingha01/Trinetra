@@ -1,0 +1,55 @@
+# TRINETRA Logic Engine Configuration
+# Override any value via environment variables:
+#   TRINETRA_VERDICT_LOW_MAX=15
+#   TRINETRA_WEIGHT_SPF_FAIL=12
+#   TRINETRA_THRESHOLD_REPUTATION=75
+#   TRINETRA_SCORING_METHOD=linear
+#   TRINETRA_LOG_LEVEL=DEBUG
+#   TRINETRA_LOG_JSON=true
+
+verdict_thresholds:
+  low_max: 25
+  medium_max: 49
+  high_max: 79
+  critical_max: 100
+
+rule_weights:
+  spf_fail: 10
+  dkim_fail: 10
+  dmarc_fail: 15
+  sender_domain_mismatch: 15
+  reply_to_mismatch: 10
+  header_anomaly: 10
+  spoofing_indicator: 10
+  bad_ip_reputation: 15
+  bad_domain_reputation: 15
+  bad_url_reputation: 15
+  malicious_hash_reputation: 20
+  high_phishing_probability: 10
+  high_bec_probability: 8
+  high_social_engineering_probability: 8
+  urgency_detected: 5
+  credential_request_detected: 8
+  financial_request_detected: 8
+
+thresholds:
+  reputation: 70
+  reputation_high: 80
+  reputation_medium: 50
+  phishing: 0.7
+  phishing_high: 0.8
+  phishing_medium: 0.6
+  bec: 0.6
+  bec_high: 0.7
+  social_eng: 0.7
+  social_eng_high: 0.8
+  auth_fail_count: 2
+
+scoring:
+  method: "capped"
+  max_possible_override: null
+
+logging:
+  level: "INFO"
+  json_format: false
+  include_timestamp: true

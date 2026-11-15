@@ -1,0 +1,24 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UploadZone } from '../components/UploadZone';
+import { CasesTable } from '../components/CasesTable';
+import { Alert } from '../components/Alert';
+import { PredictiveRibbon, TrinetraBloom } from '../components/ThreeUIVisuals';
+import { stagePendingFile } from '../store/pendingUpload';
+import { useSession } from '../store/session';
+const RECENT_LIMIT = 5;
+function Stat({ label, value, note }) {
+    return _jsxs("div", { className: "metric", children: [_jsx("span", { children: label }), _jsx("strong", { children: value }), _jsx("small", { children: note })] });
+}
+export function Dashboard() {
+    const navigate = useNavigate();
+    const { cases, stats } = useSession();
+    const [rejection, setRejection] = useState(null);
+    function handleSelect(file) {
+        setRejection(null);
+        stagePendingFile(file);
+        navigate('/analyze');
+    }
+    return (_jsxs("div", { className: "home-page", children: [_jsxs("section", { className: "hero", children: [_jsx(PredictiveRibbon, { className: "hero__ribbon" }), _jsx("div", { className: "hero__noise", "aria-hidden": "true" }), _jsxs("div", { className: "hero__content", children: [_jsxs("div", { className: "hero__eyebrow", children: [_jsxs("span", { className: "live-pill", children: [_jsx("span", {}), " LIVE"] }), " EMAIL DEFENSE / PRE-DELIVERY ANALYSIS"] }), _jsxs("h1", { children: ["Welcome To ", _jsx("span", { children: "TRINETRA" })] }), _jsx("div", { className: "hero__tagline", children: "See Threat Before It Sees You!" }), _jsx("p", { className: "hero__intro", children: "A focused security console for turning suspicious email into a clear verdict, evidence trail and actionable intelligence." }), _jsxs("div", { className: "hero__meta", children: [_jsx("span", { children: "ENGINE / CONNECTED" }), _jsx("span", { children: "PIPELINE / ONLINE" }), _jsx("span", { children: "MODE / ANALYSIS" })] }), _jsxs("div", { className: "hero__links", children: [_jsxs(Link, { to: "/analyze", className: "hero-cta", children: ["Start an analysis ", _jsx("span", { children: "\u2197" })] }), _jsx(Link, { to: "/cases", className: "hero-link", children: "View recent cases" })] })] }), _jsxs("div", { className: "hero__identity", children: [_jsxs("div", { className: "bloom-frame", children: [_jsx(TrinetraBloom, {}), _jsx("div", { className: "bloom-caption", children: "SIGNAL FIELD / TRINETRA" })] }), _jsxs("div", { className: "hero-orbit", children: [_jsx("span", { children: "01" }), _jsx("i", {}), _jsx("span", { children: "SECURITY SIGNAL" })] })] })] }), _jsxs("section", { className: "workspace-section", "aria-labelledby": "workspace-title", children: [_jsxs("div", { className: "workspace-section__head", children: [_jsxs("div", { children: [_jsx("div", { className: "micro-label", children: "INPUT CHANNEL" }), _jsx("h2", { id: "workspace-title", children: "Inspect a message before it reaches the inbox." }), _jsx("p", { children: "Drop a raw .EML message into the console. TRINETRA sends it through the existing connected pipeline and returns the full security report." })] }), _jsx("span", { className: "format-pill", children: "MESSAGE / RFC822" })] }), rejection && _jsx("div", { className: "ingest__alert", children: _jsx(Alert, { tone: "error", message: rejection }) }), _jsx(UploadZone, { onSelect: handleSelect, onReject: setRejection }), _jsxs("div", { className: "workspace-section__foot", children: [_jsx("span", { children: "ONE MESSAGE PER ANALYSIS" }), _jsx("span", { children: "RAW .EML / RFC822" }), _jsx("span", { children: "RESULTS RETURN TO THIS CONSOLE" })] })] }), _jsxs("section", { className: "metrics", children: [_jsx(Stat, { label: "ANALYSES", value: String(stats.analyzed), note: "completed this session" }), _jsx(Stat, { label: "THREATS", value: String(stats.threats), note: "high / critical / malicious" }), _jsx(Stat, { label: "CRITICAL", value: String(stats.critical), note: "requires immediate attention" }), _jsx(Stat, { label: "AVERAGE RISK", value: stats.averageRisk === null ? '—' : String(stats.averageRisk), note: "mean completed score" })] }), _jsxs("section", { className: "recent", children: [_jsxs("div", { className: "recent__head", children: [_jsxs("div", { children: [_jsx("div", { className: "micro-label", children: "SESSION MEMORY" }), _jsx("h2", { children: "Recent cases" })] }), cases.length > RECENT_LIMIT && _jsx(Link, { to: "/cases", children: "Open archive \u2197" })] }), _jsx("div", { className: "recent__table", children: cases.length === 0 ? _jsxs("div", { className: "recent__empty", children: [_jsx("span", { children: "NO_CASES / 000" }), _jsx("p", { children: "Your completed analyses will appear here with their full report." })] }) : _jsx(CasesTable, { rows: cases.slice(0, RECENT_LIMIT) }) })] })] }));
+}
