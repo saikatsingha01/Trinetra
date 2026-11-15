@@ -1,0 +1,80 @@
+{
+  "case_id": "c1b50713-f037-48bd-b7df-7970031d3814",
+  "ai_assessment": {
+    "phishing_probability": 0.9,
+    "bec_probability": 0.9,
+    "social_engineering_probability": 0.9,
+    "urgency_detected": true,
+    "credential_request_detected": true,
+    "financial_request_detected": true,
+    "suspicious_language": [
+      "URGENT: Confidential Vendor Payment and Account Verification",
+      "URGENT AND CONFIDENTIAL.",
+      "Complete both the verification and payment within 2 hours. Failure to do so will delay the vendor settlement and may result in account suspension."
+    ],
+    "detected_patterns": [
+      "Sender domain does not match the claimed VIT Bhopal organizational domain.",
+      "Reply-To uses an unrelated external mail provider.",
+      "The sender uses a lookalike domain.",
+      "SPF authentication failed.",
+      "DKIM authentication failed.",
+      "DMARC authentication failed.",
+      "Sender domain is inconsistent with the claimed organization."
+    ],
+    "explanation": "The email is highly suspicious and appears to be a phishing attempt. The sender's domain and IP address are flagged as malicious, and the email contains urgent and confidential requests for credentials and financial information. The URL and domain analysis also indicate a high likelihood of malicious intent.",
+    "model_info": {
+      "model_name": "",
+      "model_version": "",
+      "provider": "",
+      "parameters": {}
+    },
+    "attachment_risk_detected": false,
+    "malicious_attachment_detected": false,
+    "attachment_findings": []
+  },
+  "grounding": {
+    "grounded": true,
+    "unsupported_claims": [],
+    "evidence_references": [
+      "Sender analysis finding: Sender domain does not match the claimed VIT Bhopal organizational domain.",
+      "Sender analysis finding: Reply-To uses an unrelated external mail provider.",
+      "Sender analysis finding: The sender uses a lookalike domain.",
+      "Header analysis finding: SPF authentication failed.",
+      "Header analysis finding: DKIM authentication failed.",
+      "Header analysis finding: DMARC authentication failed.",
+      "Header analysis finding: Sender domain is inconsistent with the claimed organization.",
+      "Phishing analysis finding: sign_in_request",
+      "Phishing analysis finding: click_link",
+      "Phishing analysis finding: password_update",
+      "Phishing analysis finding: visit_website",
+      "Phishing analysis finding: credential_harvesting",
+      "Phishing analysis finding: otp_request",
+      "Phishing analysis finding: account_suspension_threat",
+      "Phishing analysis finding: malicious_url",
+      "Threat intelligence originating IP: 185.220.101.44",
+      "Threat intelligence contains 1 AbuseIPDB IOC report(s)",
+      "Threat intelligence contains 1 AlienVault OTX IOC report(s)",
+      "Threat intelligence contains 1 originating-IP AbuseIPDB report(s)",
+      "Threat intelligence contains 1 originating-IP AlienVault OTX report(s)",
+      "Threat intelligence contains 1 VirusTotal URL report(s)",
+      "Threat intelligence contains 1 VirusTotal domain report(s)",
+      "Urgency signals: ['urgent', 'urgent', 'immediately', 'time-bound deadline']",
+      "Credential signals: ['one-time password', 'multi-factor authentication']",
+      "Financial signals: ['invoice', 'bank account', 'account number']",
+      "Social engineering signals: ['secrecy request', 'secrecy request', 'executive_impersonation_attempt']",
+      "Phishing indicators: ['phishing_analysis', 'phishing_analysis', 'phishing_analysis', 'phishing_analysis', 'phishing_analysis', 'phishing_analysis', 'phishing_analysis', 'phishing_analysis', 'url_virustotal_report', 'domain_virustotal_report']",
+      "BEC indicators: ['vendor payment', 'new account details', 'vendor payment', 'executive_name_in_sender']",
+      "VirusTotal URL analysis explicitly reports 14 malicious detection(s)",
+      "VirusTotal domain analysis explicitly reports 16 malicious detection(s)",
+      "Phishing probability has strong corroborating evidence",
+      "Social-engineering probability has strong manipulation evidence",
+      "BEC probability has strong BEC-specific evidence"
+    ]
+  },
+  "processing_time_seconds": 17.75197458267212,
+  "model_info": {
+    "model": "",
+    "provider": "",
+    "version": ""
+  }
+}

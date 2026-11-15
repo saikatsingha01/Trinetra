@@ -1,0 +1,163 @@
+{
+  "case_id": "c1b50713-f037-48bd-b7df-7970031d3814",
+  "email": {
+    "from": "ceo@vitbhopaal-security.com",
+    "to": "finance@vitbhopal.ac.in",
+    "subject": "URGENT: Confidential Vendor Payment and Account Verification",
+    "date": "Thu, 18 Jul 2024 03:32:55 -0700",
+    "received": [
+      "from unknown-host.vitbhopaal-security.com (185.220.101.44) by mx.google.com with ESMTP id combined-attack-001; Thu, 18 Jul 2024 03:32:57 -0700"
+    ],
+    "originating_ip": "185.220.101.44",
+    "reply_to": "ceo.vitbhopal.finance@protonmail.com",
+    "return_path": "<bounce@vitbhopaal-security.com>",
+    "message_id": "<combined-high-phish-bec-001@vitbhopaal-security.com>",
+    "content": "Hi Finance Team,\n\nURGENT AND CONFIDENTIAL.\n\nI need the pending payment for Apex Academic Solutions Pvt Ltd processed immediately. The vendor has changed its bank account, so replace the existing beneficiary with the new account below.\n\nVendor: Apex Academic Solutions Pvt Ltd\nInvoice: AAS-2024-0718\nAmount: INR 8,75,000\n\nNew beneficiary:\nAccount Name: Apex Academic Solutions Pvt Ltd\nAccount Number: 482019384756\nIFSC: VITB0004820\nBank: State Bank of India\n\nBefore processing the payment, complete the finance account verification here:\nhttps://vitbhopaal-security.com/secure/finance-verification\n\nThe verification page will require your university email address, current password, new password, and OTP/MFA code.\n\nComplete both the verification and payment within 2 hours. Failure to do so will delay the vendor settlement and may result in account suspension.\n\nDo not discuss this request with other staff until the payment is completed. I am currently unavailable for a phone call, so proceed based on this email.\n\nRegards,\nChief Executive Officer\nVIT Bhopal University",
+    "content_type": [
+      "multipart/mixed",
+      "multipart/alternative",
+      "text/plain"
+    ],
+    "file_name": [],
+    "attachments": {
+      "filename": [],
+      "content_type": [],
+      "size": [],
+      "sha256": []
+    },
+    "iocs": {
+      "ip_address": [
+        "185.220.101.44"
+      ],
+      "url": [
+        "https://vitbhopaal-security.com/secure/finance-verification"
+      ],
+      "domain": [
+        "vitbhopaal-security.com",
+        "vitbhopal.ac.in",
+        "protonmail.com"
+      ]
+    },
+    "dkim_signature": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=vitbhopaal-security.com; s=default;",
+    "authentication_results": [
+      "mx.google.com; dkim=fail header.i=@vitbhopaal-security.com; spf=fail smtp.mailfrom=vitbhopaal-security.com; dmarc=fail (p=REJECT) header.from=vitbhopal.ac.in"
+    ]
+  },
+  "security_analysis": {
+    "authentication_analysis": {
+      "dns": {
+        "dns_report": [],
+        "reverse_dns_report": []
+      },
+      "spf": [],
+      "dkim": false,
+      "dmarc": {
+        "result": "fail",
+        "policy": "reject"
+      }
+    },
+    "sender_analysis": {
+      "from": {
+        "name": "Chief Executive Officer",
+        "email_address": "ceo@vitbhopaal-security.com"
+      },
+      "reply_to": {
+        "name": "",
+        "email_address": "ceo.vitbhopal.finance@protonmail.com"
+      },
+      "return_path": {
+        "name": "",
+        "email_address": "bounce@vitbhopaal-security.com"
+      },
+      "findings": [
+        "Sender domain does not match the claimed VIT Bhopal organizational domain.",
+        "Reply-To uses an unrelated external mail provider.",
+        "The sender uses a lookalike domain."
+      ]
+    },
+    "header_analysis": {
+      "received": [
+        "from unknown-host.vitbhopaal-security.com (185.220.101.44) by mx.google.com with ESMTP id combined-attack-001; Thu, 18 Jul 2024 03:32:57 -0700"
+      ],
+      "authentication_results": [
+        "mx.google.com; dkim=fail header.i=@vitbhopaal-security.com; spf=fail smtp.mailfrom=vitbhopaal-security.com; dmarc=fail header.from=vitbhopal.ac.in"
+      ],
+      "dkim_signature": "v=1; a=rsa-sha256; d=vitbhopaal-security.com; s=default;",
+      "findings": [
+        "SPF authentication failed.",
+        "DKIM authentication failed.",
+        "DMARC authentication failed.",
+        "Sender domain is inconsistent with the claimed organization."
+      ]
+    },
+    "phishing_analysis": [
+      "sign_in_request",
+      "click_link",
+      "password_update",
+      "visit_website",
+      "credential_harvesting",
+      "otp_request",
+      "account_suspension_threat",
+      "malicious_url"
+    ]
+  },
+  "threat_intelligence": {
+    "ip_analysis": {
+      "iocs_ip_abuseIPDB": [
+        {
+          "ip": "185.220.101.44",
+          "abuse_confidence_score": 100
+        }
+      ],
+      "iocs_ip_alienvaultOTX": [
+        {
+          "ip": "185.220.101.44",
+          "pulse_count": 17,
+          "malicious": true
+        }
+      ],
+      "originating_ip": "185.220.101.44",
+      "originating_ip_abuseIPDB": [
+        {
+          "ip": "185.220.101.44",
+          "abuse_confidence_score": 100
+        }
+      ],
+      "originating_ip_alienvaultOTX": [
+        {
+          "ip": "185.220.101.44",
+          "pulse_count": 17,
+          "malicious": true
+        }
+      ]
+    },
+    "url_analysis": {
+      "virusTotal_report": [
+        {
+          "url": "https://vitbhopaal-security.com/secure/finance-verification",
+          "malicious": 14,
+          "suspicious": 7,
+          "harmless": 39,
+          "undetected": 20
+        }
+      ]
+    },
+    "domain_analysis": {
+      "virusTotal_report": [
+        {
+          "domain": "vitbhopaal-security.com",
+          "malicious": 16,
+          "suspicious": 9,
+          "harmless": 28,
+          "undetected": 27
+        }
+      ]
+    },
+    "attachment_analysis": {
+      "virusTotal_report": []
+    }
+  },
+  "forensic_evidence": {
+    "attachments": []
+  }
+}
